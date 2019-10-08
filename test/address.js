@@ -11,6 +11,8 @@ const ADDRESS    = 'lambda163q4m634nq8les4nuvdvz49tk6aeh926t0ccsc';
 const BYTES_HEX  = 'd4415dea35980ffcc2b3e31ac154abb6bb9b955a';
 const BYTES32_HEX = BYTES_HEX + Buffer.alloc(12).toString('hex');
 const PUBLIC_KEY  = '03c5c007170a8b46d7e8ffcaec26a27cf26f7e4fe94ab7f813b98133bc95f3d651';
+const ADDRESS_Validator    = 'lambda18j63yncsd8awmf5a6057rlfzxmqlfdntkhlqra';
+const ADDRESS_valoper    = 'lambdavaloper18j63yncsd8awmf5a6057rlfzxmqlfdntqnktef';
 
 describe('lib/address', () => {
     let bytes;
@@ -32,6 +34,15 @@ describe('lib/address', () => {
         const addr = LAMBHDKEY.address.getAddressFromBytes(bytes);
         addr.should.be.equal(ADDRESS);
     });
+
+    it('Should get valoper address from address', () => {
+        const addr = LAMBHDKEY.address.validatorAddress(ADDRESS_Validator);
+        addr.should.be.equal(ADDRESS_valoper);
+    });
+
+
+
+    
 
     
 });
