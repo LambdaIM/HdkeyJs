@@ -40,6 +40,11 @@ describe('lib/address', () => {
         addr.should.be.equal(ADDRESS_valoper);
     });
 
+    it('Should get miner address from address', () => {
+        const addr = LAMBHDKEY.address.MinerAddress('lambda1mzs0zsm7gw6hzfchaw75ge7g5jxyvq8ue50p0x');
+        addr.should.be.equal('lambdamineroper1mzs0zsm7gw6hzfchaw75ge7g5jxyvq8udmrx6m');
+    });
+
 
 
     
