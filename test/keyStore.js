@@ -1,6 +1,8 @@
 
 require('chai').should();
 
+var assert = require('chai').assert;
+
 const LAMBHDKEY = require('../index.js');
 
 const ADDRESS    = 'lambda163q4m634nq8les4nuvdvz49tk6aeh926t0ccsc';
@@ -41,6 +43,29 @@ describe('lib/keyStore', () => {
     it('Should checkjson and to json privateKey', () => {   
         keys.privateKey.toString('base64').should.be.equal(_privateKey.toString('base64'));
     });
+
+    
+
+});
+
+
+describe('lib/keyStore password error', () => {
+    let bytes;
+    let bytes32;
+    var keys = LAMBHDKEY.crypto.getKeysFromMnemonic(MNEMONIC);
+
+    const value = LAMBHDKEY.keyStore.toJson(keys,password,name);
+
+    
+    function iThrowError() {
+        var _privateKey = LAMBHDKEY.keyStore.checkJson(value,password+1);
+    }
+    it('Should Password error', () => {   
+        assert.throws(iThrowError, Error, `{"code":"hdkey-31","message":"Password error"}`);
+    });
+    
+
+    
 
     
 
